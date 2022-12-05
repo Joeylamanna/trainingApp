@@ -3,28 +3,47 @@
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-
+   
     return Scaffold(
-        backgroundColor: Color.fromARGB(255, 0, 0, 0),
-        
-        bottomNavigationBar: BottomNavigationBar(
-                  backgroundColor: Color.fromARGB(255, 0, 0, 0),
-          items: [
-          BottomNavigationBarItem( 
-           icon: Icon(Icons.home, color:Color.fromARGB(255, 1, 217, 255)),
-          label:  "Home", ),
-           BottomNavigationBarItem( 
-           icon: Icon(Icons.timer,color:Color.fromARGB(255, 1, 217, 255)),
-          label:  "Timer", ),
-          BottomNavigationBarItem( 
-           icon: Icon(Icons.grade_outlined, color:Color.fromARGB(255, 1, 217, 255)),
-          label:  "Personal Records ", ),
-        ],
-      ),
-        
+       
+        backgroundColor: Color.fromARGB(255, 0, 0, 0), //backround to black
+
+        bottomNavigationBar: ClipRRect(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(40)),
+          child: BottomNavigationBar(
+            iconSize: 40,
+            currentIndex: 0,
+            unselectedItemColor: Color.fromARGB(255, 1, 217, 255),
+            selectedItemColor: Color.fromARGB(255, 255, 255, 255),
+            backgroundColor: Color.fromARGB(255, 0, 0, 0),
+            selectedFontSize: 20,
+            
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home,
+                ),
+                label: "Home",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.timer,
+                ),
+                label: "Timer",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.grade_outlined,
+                ),
+                label: " Records ",
+              ),
+            ],
+          ),
+        ),
         body: Stack(
           children: <Widget>[
             Positioned(
@@ -35,13 +54,22 @@ class ProfileScreen extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: const BorderRadius.vertical(
                   //top: const Radius.circular(40),
-                  bottom: const Radius.circular(40),
+                  bottom: Radius.circular(40),
                 ),
                 child: Container(
                   color: Color.fromARGB(255, 1, 217, 255),
                 ),
               ),
-            )
+            ),
+            Positioned(
+              top: 733,
+              left: 0,
+              right: 0,
+              child: Container( 
+                color: Color.fromARGB(255, 1, 217, 255),
+                height: height * 0.1,
+              ),
+            ),
           ],
         ));
   }
