@@ -16,10 +16,7 @@ class _TimerPageState extends State<TimerPage> {
   Timer? countdownTimer;
   Duration myDuration = const Duration(minutes: 3);
   @override
-  // void initState() {
-  //   super.initState();
-  // }
-
+  
 
   /// Timer related methods ///
   // Step 3

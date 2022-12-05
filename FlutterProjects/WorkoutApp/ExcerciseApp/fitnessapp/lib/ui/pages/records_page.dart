@@ -1,45 +1,92 @@
 import 'package:flutter/material.dart';
 
 class RecordsPage extends StatefulWidget {
+  const RecordsPage({Key? key}) : super(key: key);
+
   @override
   _RecordsPage createState() => _RecordsPage();
 }
 
 class _RecordsPage extends State<RecordsPage> {
-  int counter = 0;
+  List<String> recordData = ['Bench', 'Squat', 'Deadlift'];
+  String text = '';
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-
     return Scaffold(
-        backgroundColor: Color.fromARGB(255, 0, 0, 0), //backround to black
-        body: Stack(
-          children: <Widget>[
-            Positioned(
-              top: 0,
-              height: height * 0.35,
-              left: 0,
-              right: 0,
-              child: ClipRRect(
-                borderRadius: const BorderRadius.vertical(
-                  //top: const Radius.circular(40),
-                  bottom: Radius.circular(40),
-                ),
-                child: Container(
-                  color: Color.fromARGB(255, 1, 217, 255),
-                ),
-              ),
-            ),
-            Positioned(
-              top: 733,
-              left: 0,
-              right: 0,
-              child: Container(
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 1, 217, 255),
+        title: const Text("Personal Records"),
+        foregroundColor: Color.fromARGB(255, 0, 0, 0),
+      ),
+        backgroundColor: Colors.black,
+        body: ListView.builder(
+          scrollDirection: Axis.vertical,
+            itemCount: recordData.length,
+            itemBuilder: (context, index) {
+              return Card(
                 color: Color.fromARGB(255, 1, 217, 255),
-                height: height * 0.1,
-              ),
-            ),
-          ],
-        ));
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: ListTile(
+                    textColor: Color.fromARGB(255, 0, 0, 0),
+                    selectedTileColor: Colors.white,
+                    title: Text(recordData[index]),
+                    trailing: Container(
+                        width: 100,
+                        child: Row(
+                          children: [
+                            Expanded(
+                                child: IconButton(
+                                 color: Colors.black,
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) => SimpleDialog(
+                                          children: [
+                                            TextField(onChanged: (value) {
+                                              setState(() {
+                                                text = value;
+                                              });
+                                            }),
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                setState(() {
+                                                  recordData[index] = text;
+                                                });
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text('update'),
+                              
+                                            )
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                    icon: Icon(Icons.edit))),
+                            Expanded(
+                                child: IconButton(
+                                  color: Colors.black,
+                                    onPressed: () {
+                                      setState(() {
+                                        recordData.removeAt(index);
+                                        
+                                      });
+                                    },
+                                    icon: Icon(Icons.delete))),
+                              Expanded(
+                                child: IconButton(
+                                  color: Colors.black,
+                                    onPressed: () {
+                                      setState(() {
+                                        recordData.add('add record');
+                                      });
+                                    },
+                                    icon: Icon(Icons.add)))
+                          ],
+                        )),
+                  ),
+                ),
+              );
+            }));
   }
 }
