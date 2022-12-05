@@ -3,11 +3,12 @@ import 'package:fitnessapp/ui/pages/home_page.dart';
 import 'package:fitnessapp/ui/pages/timer_page.dart';
 import 'package:fitnessapp/ui/pages/records_page.dart';
 import 'package:flutter/material.dart';
-
+import 'dart:async';
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+   
 
   static const String _title = 'Flutter Code Sample';
 
@@ -28,6 +29,7 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  
   int _selectedIndex = 0;
   final screens = [
     HomePage(),
