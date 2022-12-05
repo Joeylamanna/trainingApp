@@ -20,7 +20,6 @@ class _TimerPageState extends State<TimerPage> {
   //   super.initState();
   // }
 
-
   /// Timer related methods ///
   // Step 3
   void startTimer() {
@@ -58,7 +57,7 @@ class _TimerPageState extends State<TimerPage> {
     // Step 7
     var minutes = strDigits(myDuration.inMinutes.remainder(3));
     var seconds = strDigits(myDuration.inSeconds.remainder(60));
-  
+
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 0, 0, 0),
       appBar: AppBar(
@@ -86,7 +85,7 @@ class _TimerPageState extends State<TimerPage> {
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(
                     Color.fromARGB(255, 1, 217, 255))),
-            onPressed: startTimer, 
+            onPressed: startTimer,
             child: const Text(
               'Start',
               style: TextStyle(
@@ -128,7 +127,6 @@ class _TimerPageState extends State<TimerPage> {
                   fontSize: 30,
                 ),
               )),
-              
         ]),
       ),
     );

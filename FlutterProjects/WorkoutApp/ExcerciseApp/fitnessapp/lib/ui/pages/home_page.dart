@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -11,112 +12,227 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
 
-    return Scaffold(
-        backgroundColor: Color.fromARGB(255, 0, 0, 0), //backround to black
-        body: Stack(
-          children: <Widget>[
-            //Light Blue TOP BOX
-            Positioned(
-              top: 0,
-              height: height * 0.35,
-              left: 0,
-              right: 0,
-              child: ClipRRect(
-                borderRadius: const BorderRadius.vertical(
-                  //top: const Radius.circular(40),
-                  bottom: Radius.circular(40),
-                ),
-                child: Container(
-                  color: Color.fromARGB(255, 1, 217, 255),
-                ),
-              ),
-            ),
+    DateTime now = DateTime.now();
+    String formattedDate = DateFormat.MMMMEEEEd().format(DateTime.now());
 
-            //WorkoutBox
-            Positioned(
-              top: 350,
-              height: height * .2,
-              left: 0,
-              right: 0,
-              child: Container(
-                margin: const EdgeInsets.only(bottom: 10, left: 32, right: 32),
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(30)),
-                  gradient: LinearGradient(
+    return Scaffold(
+      backgroundColor: Color.fromARGB(255, 0, 0, 0), //backround to black
+      body: Stack(
+        children: <Widget>[
+          //Light Blue TOP BOX
+          Positioned(
+            top: 140,
+            height: height * 0.25,
+            left: 20,
+            right: 20,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20.0),
+                gradient: const LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    colors: [
+                    colors: <Color>[
                       Color.fromARGB(255, 1, 217, 255),
-                      Color.fromARGB(255, 0, 0, 0),
-                    ],
-                  ),
-                ),
-                child: Column(
-                  children: <Widget>[
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 16.0, left: 16),
-                      child: Text(
-                        "Monday",
-                        style: TextStyle(
-                            color: Color.fromARGB(179, 255, 255, 255),
-                            fontSize: 30,
-                            fontFamily: 'Raleway',
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    // const Padding(
-                    //   padding: EdgeInsets.only(top: 4.0, left: 16),
-                    //   child: Text(
-                    //     "MONDAY",
-                    //     style: TextStyle(
-                    //         color: Colors.white70,
-                    //         fontSize: 16,
-                    //         fontWeight: FontWeight.w600),
-                    //   ),
-                    // ),
-                    Row(
-                      children: <Widget>[
-                        Container(
-                            padding: const EdgeInsets.all(10),
-                            child: Image.asset("assets/chest.png",
-                                width: 30, height: 30, color: Colors.white)),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                            padding: const EdgeInsets.all(10),
-                            child: Image.asset("assets/chest.png",
-                                width: 30, height: 30, color: Colors.white)),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                            padding: const EdgeInsets.all(10),
-                            child: Image.asset("assets/chest.png",
-                                width: 30, height: 30, color: Colors.white)),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                      Colors.black
+                    ]),
               ),
             ),
+          ),
 
-            Positioned(
-              top: 733,
-              left: 0,
-              right: 0,
-              child: Container(
-                color: Color.fromARGB(255, 1, 217, 255),
-                height: height * 0.1,
+          //DATE
+          Positioned(
+            top: 50,
+            left: 20,
+            right: 20,
+            height: height * .35,
+            child: SizedBox(
+              height: 310,
+              child: Text(
+                formattedDate,
+                style: const TextStyle(
+                  color: Color.fromARGB(255, 88, 88, 88),
+                  fontFamily: "SF UI Text",
+                  fontSize: 20,
+                  fontWeight: FontWeight.w800,
+                ),
               ),
             ),
-          ],
-        ));
+          ),
+
+          //Summary
+          Positioned(
+            top: 80,
+            left: 20,
+            right: 20,
+            height: height * .35,
+            child: const SizedBox(
+              height: 310,
+              child: Text(
+                "Summary",
+                style: TextStyle(
+                  color: Color.fromARGB(255, 255, 255, 255),
+                  fontFamily: "SF UI Text",
+                  fontSize: 40,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ),
+          ),
+
+          Positioned(
+            top: 355,
+            left: 20,
+            right: 20,
+            height: height * .6,
+            child: const SizedBox(
+              height: 310,
+              child: Text("Workouts",
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 255, 255, 255),
+                    fontFamily: "SF UI Text",
+                    fontSize: 30,
+                    fontWeight: FontWeight.w800,
+                  )),
+            ),
+          ),
+
+          Positioned(
+            top: 400,
+            height: height * .4,
+            left: 20,
+            right: 20,
+            child: ListView(
+              scrollDirection: Axis.vertical,
+              addAutomaticKeepAlives: false,
+              // padding: const EdgeInsets.all(10),
+              children: <Widget>[
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20.0),
+                    gradient: const LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: <Color>[
+                          Color.fromARGB(255, 1, 217, 255),
+                          Colors.black
+                        ]),
+                  ),
+                  height: 100,
+                  // color: Color.fromARGB(255, 1, 217, 255),
+                  child: const Center(
+                      child: Text("Monday",
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            fontFamily: ".SF UI Text",
+                            fontSize: 30,
+                            fontWeight: FontWeight.w300,
+                          ))),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20.0),
+                    gradient: const LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: <Color>[
+                          Color.fromARGB(255, 1, 217, 255),
+                          Colors.black
+                        ]),
+                  ),
+                  height: 100,
+                  // color: Color.fromARGB(255, 1, 217, 255),
+                  child: const Center(
+                      child: Text('Tuesday',
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            fontFamily: ".SF UI Text",
+                            fontSize: 30,
+                            fontWeight: FontWeight.w300,
+                          ))),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20.0),
+                    gradient: const LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: <Color>[
+                          Color.fromARGB(255, 1, 217, 255),
+                          Colors.black
+                        ]),
+                  ),
+                  height: 100,
+                  // color: Color.fromARGB(255, 1, 217, 255),
+                  child: const Center(
+                      child: Text('Wednesday',
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            fontFamily: ".SF UI Text",
+                            fontSize: 30,
+                            fontWeight: FontWeight.w300,
+                          ))),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20.0),
+                    gradient: const LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: <Color>[
+                          Color.fromARGB(255, 1, 217, 255),
+                          Colors.black
+                        ]),
+                  ),
+                  height: 100,
+                  // color: Color.fromARGB(255, 1, 217, 255),
+                  child: const Center(
+                      child: Text('Thursday',
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            fontFamily: ".SF UI Text",
+                            fontSize: 30,
+                            fontWeight: FontWeight.w300,
+                          ))),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20.0),
+                    gradient: const LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: <Color>[
+                          Color.fromARGB(255, 1, 217, 255),
+                          Colors.black
+                        ]),
+                  ),
+                  height: 100,
+                  // color: Color.fromARGB(255, 1, 217, 255),
+                  child: const Center(
+                      child: Text('Friday',
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            fontFamily: ".SF UI Text",
+                            fontSize: 30,
+                            fontWeight: FontWeight.w300,
+                          ))),
+                ),
+              ],
+            ),
+          ),
+
+          Positioned(
+            top: 733,
+            left: 0,
+            right: 0,
+            child: Container(
+              color: Color.fromARGB(255, 1, 217, 255),
+              height: height * 0.1,
+            ),
+          ),
+        ],
+      ),
+    );
+
+    // ));
   }
 }
