@@ -220,15 +220,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
 
-          Positioned(
-            top: 733,
-            left: 0,
-            right: 0,
-            child: Container(
-              color: Color.fromARGB(255, 1, 217, 255),
-              height: height * 0.1,
-            ),
-          ),
+          
         ],
       ),
     );
