@@ -46,7 +46,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[_selectedIndex],
+      body: IndexedStack( //allows the state to be preserved when switching screens
+        index: _selectedIndex,
+        children: screens, ),
       bottomNavigationBar: ClipRRect(
           child: BottomNavigationBar(
             iconSize: 40,
