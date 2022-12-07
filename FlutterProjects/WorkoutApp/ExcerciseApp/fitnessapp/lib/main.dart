@@ -2,13 +2,14 @@
 import 'package:fitnessapp/ui/pages/home_page.dart';
 import 'package:fitnessapp/ui/pages/timer_page.dart';
 import 'package:fitnessapp/ui/pages/records_page.dart';
+import 'package:fitnessapp/ui/pages/monday_workout.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-   
 
   static const String _title = 'Flutter Code Sample';
 
@@ -29,13 +30,13 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  
   int _selectedIndex = 0;
   final screens = [
     HomePage(),
     TimerPage(),
-    RecordsPage()
-    ];
+    RecordsPage(),
+    MondayPage(),
+  ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -46,10 +47,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack( //allows the state to be preserved when switching screens
-        index: _selectedIndex,
-        children: screens, ),
-      bottomNavigationBar: ClipRRect(
+        body: IndexedStack(
+          //allows the state to be preserved when switching screens
+          index: _selectedIndex,
+          children: screens,
+        ),
+        bottomNavigationBar: ClipRRect(
           child: BottomNavigationBar(
             iconSize: 40,
             currentIndex: _selectedIndex,
@@ -57,24 +60,22 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             selectedItemColor: const Color.fromARGB(255, 255, 255, 255),
             backgroundColor: const Color.fromARGB(255, 0, 0, 0),
             selectedFontSize: 20,
-      
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.timer),
+                label: 'Timer',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.grade_outlined),
+                label: 'Records',
+              ),
+            ],
+            onTap: _onItemTapped,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.timer),
-            label: 'Timer',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.grade_outlined),
-            label: 'Records',
-          ),
-        ],
-        onTap: _onItemTapped,
-      ),
-    )
-    );
+        ));
   }
 }

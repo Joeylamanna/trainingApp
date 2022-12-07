@@ -1,3 +1,6 @@
+import 'package:fitnessapp/ui/pages/monday_workout.dart';
+import 'package:fitnessapp/ui/pages/records_page.dart';
+import 'package:fitnessapp/ui/pages/timer_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -8,6 +11,20 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int counter = 0;
+  int _selectedIndex = 0;
+  // int currentIndex = 0;
+  final screens = [
+    HomePage(),
+    TimerPage(),
+    RecordsPage(),
+    MondayPage(),
+  ];
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -17,8 +34,10 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 0, 0, 0), //backround to black
+
       body: Stack(
         children: <Widget>[
+          // screens,
           //Light Blue TOP BOX
           Positioned(
             top: 140,
@@ -103,30 +122,46 @@ class _HomePageState extends State<HomePage> {
             right: 20,
             child: ListView(
               scrollDirection: Axis.vertical,
-              addAutomaticKeepAlives: false,
+              // addAutomaticKeepAlives: false,
               // padding: const EdgeInsets.all(10),
               children: <Widget>[
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                    gradient: const LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: <Color>[
-                          Color.fromARGB(255, 1, 217, 255),
-                          Colors.black
-                        ]),
-                  ),
-                  height: 100,
-                  // color: Color.fromARGB(255, 1, 217, 255),
-                  child: const Center(
-                      child: Text("Monday",
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const MondayPage(),
+                          // currentIndex: _selectedIndex,
+                        ),
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20.0),
+                        gradient: const LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: <Color>[
+                            Color.fromARGB(255, 1, 217, 255),
+                            Colors.black
+                          ],
+                        ),
+                      ),
+                      height: 100,
+                      // color: Color.fromARGB(255, 1, 217, 255),
+                      child: const Center(
+                        child: Text(
+                          "Monday",
                           style: TextStyle(
                             color: Color.fromARGB(255, 255, 255, 255),
                             fontFamily: ".SF UI Text",
                             fontSize: 30,
                             fontWeight: FontWeight.w300,
-                          ))),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
                 Container(
                   decoration: BoxDecoration(
@@ -219,8 +254,6 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-
-          
         ],
       ),
     );
