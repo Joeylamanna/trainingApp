@@ -34,6 +34,18 @@ class _MondayPage extends State<MondayPage> {
   @override
   Widget build(BuildContext context) {
     const Key centerKey = ValueKey<String>('bottom-sliver-list');
+    Color getColor(Set<MaterialState> states) {
+      const Set<MaterialState> interactiveStates = <MaterialState>{
+        MaterialState.pressed,
+        MaterialState.hovered,
+        MaterialState.focused,
+      };
+      if (states.any(interactiveStates.contains)) {
+        return Colors.blue;
+      }
+      return Colors.red;
+    }
+
     return Scaffold(
         appBar: AppBar(
           centerTitle: false,
@@ -66,7 +78,9 @@ class _MondayPage extends State<MondayPage> {
             itemCount: workouts.length,
             itemBuilder: (context, index) {
               return Card(
-                // shape: borderRadius.circular(20.0),
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                ),
                 color: Color.fromARGB(255, 1, 217, 255),
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),

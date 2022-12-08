@@ -12,13 +12,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int counter = 0;
   int _selectedIndex = 0;
-  // int currentIndex = 0;
+
   final screens = [
     HomePage(),
     TimerPage(),
     RecordsPage(),
     MondayPage(),
   ];
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -31,11 +32,21 @@ class _HomePageState extends State<HomePage> {
 
     DateTime now = DateTime.now();
     String formattedDate = DateFormat.MMMMEEEEd().format(DateTime.now());
-
+    List<String> days = [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 0, 0, 0), //backround to black
 
       body: Stack(
+        // //allows the state to be preserved when switching screens
+        // index: 3,
+        // // children: screens
         children: <Widget>[
           // screens,
           //Light Blue TOP BOX
@@ -120,140 +131,180 @@ class _HomePageState extends State<HomePage> {
             height: height * .4,
             left: 20,
             right: 20,
-            child: ListView(
-              scrollDirection: Axis.vertical,
-              // addAutomaticKeepAlives: false,
-              // padding: const EdgeInsets.all(10),
+            child: IndexedStack(
               children: <Widget>[
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const MondayPage(),
-                          // currentIndex: _selectedIndex,
-                        ),
-                      );
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.0),
-                        gradient: const LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: <Color>[
-                            Color.fromARGB(255, 1, 217, 255),
-                            Colors.black
-                          ],
-                        ),
+                ListView.builder(
+                  itemCount: days.length,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20.0)),
                       ),
-                      height: 100,
-                      // color: Color.fromARGB(255, 1, 217, 255),
-                      child: const Center(
-                        child: Text(
-                          "Monday",
-                          style: TextStyle(
+                      color: Color.fromARGB(255, 1, 217, 255),
+                      child: ListTile(
+                        title: Text(
+                          days[index],
+                          style: const TextStyle(
                             color: Color.fromARGB(255, 255, 255, 255),
                             fontFamily: ".SF UI Text",
                             fontSize: 30,
                             fontWeight: FontWeight.w300,
                           ),
                         ),
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const MondayPage()));
+                          setState(() {
+                            days.insert(index, 'updated value');
+                          });
+                        },
+                        onLongPress: () {
+                          //                            <-- onLongPress
+                          setState(() {
+                            days.removeAt(index);
+                          });
+                        },
                       ),
-                    ),
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                    gradient: const LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: <Color>[
-                          Color.fromARGB(255, 1, 217, 255),
-                          Colors.black
-                        ]),
-                  ),
-                  height: 100,
-                  // color: Color.fromARGB(255, 1, 217, 255),
-                  child: const Center(
-                      child: Text('Tuesday',
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255),
-                            fontFamily: ".SF UI Text",
-                            fontSize: 30,
-                            fontWeight: FontWeight.w300,
-                          ))),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                    gradient: const LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: <Color>[
-                          Color.fromARGB(255, 1, 217, 255),
-                          Colors.black
-                        ]),
-                  ),
-                  height: 100,
-                  // color: Color.fromARGB(255, 1, 217, 255),
-                  child: const Center(
-                      child: Text('Wednesday',
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255),
-                            fontFamily: ".SF UI Text",
-                            fontSize: 30,
-                            fontWeight: FontWeight.w300,
-                          ))),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                    gradient: const LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: <Color>[
-                          Color.fromARGB(255, 1, 217, 255),
-                          Colors.black
-                        ]),
-                  ),
-                  height: 100,
-                  // color: Color.fromARGB(255, 1, 217, 255),
-                  child: const Center(
-                      child: Text('Thursday',
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255),
-                            fontFamily: ".SF UI Text",
-                            fontSize: 30,
-                            fontWeight: FontWeight.w300,
-                          ))),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                    gradient: const LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: <Color>[
-                          Color.fromARGB(255, 1, 217, 255),
-                          Colors.black
-                        ]),
-                  ),
-                  height: 100,
-                  // color: Color.fromARGB(255, 1, 217, 255),
-                  child: const Center(
-                      child: Text('Friday',
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255),
-                            fontFamily: ".SF UI Text",
-                            fontSize: 30,
-                            fontWeight: FontWeight.w300,
-                          ))),
+                    );
+                  },
                 ),
               ],
             ),
           ),
+
+          // child: ListView(
+          //   scrollDirection: Axis.vertical,
+          //   // addAutomaticKeepAlives: false,
+          //   // padding: const EdgeInsets.all(10),
+          //   children: <Widget>[
+          //     Expanded(
+          //       child: GestureDetector(
+          //         onTap: () {
+          //           Navigator.of(context).push(
+          //             MaterialPageRoute(
+          //               builder: (context) => const MondayPage(),
+          //               // currentIndex: _selectedIndex,
+          //             ),
+          //           );
+          //         },
+          //         child: Container(
+          //           decoration: BoxDecoration(
+          //             borderRadius: BorderRadius.circular(20.0),
+          //             gradient: const LinearGradient(
+          //               begin: Alignment.topCenter,
+          //               end: Alignment.bottomCenter,
+          //               colors: <Color>[
+          //                 Color.fromARGB(255, 1, 217, 255),
+          //                 Colors.black
+          //               ],
+          //             ),
+          //           ),
+          //           height: 100,
+          //           // color: Color.fromARGB(255, 1, 217, 255),
+          //           child: const Center(
+          //             child: Text(
+          //               "Monday",
+          //               style: TextStyle(
+          //                 color: Color.fromARGB(255, 255, 255, 255),
+          //                 fontFamily: ".SF UI Text",
+          //                 fontSize: 30,
+          //                 fontWeight: FontWeight.w300,
+          //               ),
+          //             ),
+          //           ),
+          //         ),
+          //       ),
+          //     ),
+          //     Container(
+          //       decoration: BoxDecoration(
+          //         borderRadius: BorderRadius.circular(20.0),
+          //         gradient: const LinearGradient(
+          //             begin: Alignment.topCenter,
+          //             end: Alignment.bottomCenter,
+          //             colors: <Color>[
+          //               Color.fromARGB(255, 1, 217, 255),
+          //               Colors.black
+          //             ]),
+          //       ),
+          //       height: 100,
+          //       // color: Color.fromARGB(255, 1, 217, 255),
+          //       child: const Center(
+          //           child: Text('Tuesday',
+          //               style: TextStyle(
+          //                 color: Color.fromARGB(255, 255, 255, 255),
+          //                 fontFamily: ".SF UI Text",
+          //                 fontSize: 30,
+          //                 fontWeight: FontWeight.w300,
+          //               ))),
+          //     ),
+          //     Container(
+          //       decoration: BoxDecoration(
+          //         borderRadius: BorderRadius.circular(20.0),
+          //         gradient: const LinearGradient(
+          //             begin: Alignment.topCenter,
+          //             end: Alignment.bottomCenter,
+          //             colors: <Color>[
+          //               Color.fromARGB(255, 1, 217, 255),
+          //               Colors.black
+          //             ]),
+          //       ),
+          //       height: 100,
+          //       // color: Color.fromARGB(255, 1, 217, 255),
+          //       child: const Center(
+          //           child: Text('Wednesday',
+          //               style: TextStyle(
+          //                 color: Color.fromARGB(255, 255, 255, 255),
+          //                 fontFamily: ".SF UI Text",
+          //                 fontSize: 30,
+          //                 fontWeight: FontWeight.w300,
+          //               ))),
+          //     ),
+          //     Container(
+          //       decoration: BoxDecoration(
+          //         borderRadius: BorderRadius.circular(20.0),
+          //         gradient: const LinearGradient(
+          //             begin: Alignment.topCenter,
+          //             end: Alignment.bottomCenter,
+          //             colors: <Color>[
+          //               Color.fromARGB(255, 1, 217, 255),
+          //               Colors.black
+          //             ]),
+          //       ),
+          //       height: 100,
+          //       // color: Color.fromARGB(255, 1, 217, 255),
+          //       child: const Center(
+          //           child: Text('Thursday',
+          //               style: TextStyle(
+          //                 color: Color.fromARGB(255, 255, 255, 255),
+          //                 fontFamily: ".SF UI Text",
+          //                 fontSize: 30,
+          //                 fontWeight: FontWeight.w300,
+          //               ))),
+          //     ),
+          //     Container(
+          //       decoration: BoxDecoration(
+          //         borderRadius: BorderRadius.circular(20.0),
+          //         gradient: const LinearGradient(
+          //             begin: Alignment.topCenter,
+          //             end: Alignment.bottomCenter,
+          //             colors: <Color>[
+          //               Color.fromARGB(255, 1, 217, 255),
+          //               Colors.black
+          //             ]),
+          //       ),
+          //       height: 100,
+          //       // color: Color.fromARGB(255, 1, 217, 255),
+          //       child: const Center(
+          //           child: Text('Friday',
+          //               style: TextStyle(
+          //                 color: Color.fromARGB(255, 255, 255, 255),
+          //                 fontFamily: ".SF UI Text",
+          //                 fontSize: 30,
+          //                 fontWeight: FontWeight.w300,
+          //               ))),
+          //     ),
+          //   ],
+          // ),
         ],
       ),
     );
