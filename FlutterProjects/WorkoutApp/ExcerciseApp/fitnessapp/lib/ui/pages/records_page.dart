@@ -25,6 +25,18 @@ class _RecordsPage extends State<RecordsPage> {
               fontWeight: FontWeight.w700,
             ),
           ),
+          actions: <Widget>[
+            IconButton(
+              splashRadius: 35,
+              autofocus: false,
+              icon: const Icon(Icons.add),
+              onPressed: () {
+                setState(() {
+                  recordData.add('add record');
+                });
+              },
+            ),
+          ],
           foregroundColor: Color.fromARGB(255, 0, 0, 0),
         ),
         backgroundColor: Colors.black,

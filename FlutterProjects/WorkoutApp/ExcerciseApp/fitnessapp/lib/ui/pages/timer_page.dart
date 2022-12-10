@@ -12,35 +12,45 @@ class TimerPage extends StatefulWidget {
 }
 
 class _TimerPageState extends State<TimerPage> {
-  // Step 2
+  
   Timer? countdownTimer;
-  Duration myDuration = const Duration(minutes: 3);
+  var minupdate =  1;
+  Duration myDuration = Duration(minutes: 1);
+
   @override
   // void initState() {
   //   super.initState();
   // }
 
   /// Timer related methods ///
-  // Step 3
+  
   void startTimer() {
     countdownTimer =
         Timer.periodic(const Duration(seconds: 1), (_) => setCountDown());
   }
 
-  // Step 4
+  
   void stopTimer() {
     setState(() => countdownTimer!.cancel());
   }
 
-  // Step 5
+  
   void resetTimer() {
-    stopTimer();
-    setState(() => myDuration = const Duration(minutes: 3));
+    //stopTimer();
+    setState(() => myDuration = Duration(minutes: minupdate));
+    //minupdate = 1;
   }
 
-  // Step 6
+  void addMinutes() {
+    setState(() => myDuration = Duration(minutes: ++minupdate));
+  }
+  void subtractMinutes() {
+    setState(() => myDuration = Duration(minutes: --minupdate));
+  }
+
+  
   void setCountDown() {
-    final reduceSecondsBy = 1;
+    const reduceSecondsBy = 1;
     setState(() {
       final seconds = myDuration.inSeconds - reduceSecondsBy;
       if (seconds < 0) {
@@ -55,8 +65,9 @@ class _TimerPageState extends State<TimerPage> {
   Widget build(BuildContext context) {
     String strDigits(int n) => n.toString().padLeft(2, '0');
     // Step 7
-    var minutes = strDigits(myDuration.inMinutes.remainder(3));
+    var minutes = strDigits(myDuration.inMinutes.remainder(60));
     var seconds = strDigits(myDuration.inSeconds.remainder(60));
+    var time = '1';
 
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 0, 0, 0),
@@ -68,7 +79,7 @@ class _TimerPageState extends State<TimerPage> {
           style: TextStyle(
             color: Color.fromARGB(255, 0, 0, 0),
             fontFamily: ".SF UI Text",
-            fontSize: 25,
+            fontSize: 40,
             fontWeight: FontWeight.w700,
           ),
         ),
@@ -77,37 +88,97 @@ class _TimerPageState extends State<TimerPage> {
       body: Center(
         child: Column(children: [
           const SizedBox(
-            height: 215,
+            height: 90,
           ),
           // Step 8
           Text(
-            '$minutes:$seconds',
+            time = '$minutes:$seconds',
             style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Color.fromARGB(255, 1, 217, 255),
                 fontSize: 100),
           ),
           const SizedBox(height: 20),
-          // Step 9
+          ElevatedButton(
+             style: ButtonStyle(
+              shape: MaterialStateProperty.all(
+      RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30.0),
+        side: BorderSide(width: 2, color: Color.fromARGB(255, 1, 217, 255)),
+      ),
+    ),
+                 backgroundColor: MaterialStateProperty.all(
+                     Color.fromARGB(255, 0, 0, 0))),
+             onPressed: () {
+               addMinutes();
+             },
+             child: const Text(
+               '+1 Min',
+               style: TextStyle(
+                 color: Color.fromARGB(255, 1, 217, 255),
+                 fontSize: 50,
+               ),
+             )),
+             const SizedBox(
+            height: 10,
+          ),
+              ElevatedButton(
+              style: ButtonStyle(
+                shape: MaterialStateProperty.all(
+      RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30.0),
+        side: BorderSide(width: 2, color: Color.fromARGB(255, 1, 217, 255)),
+      ),
+    ),
+                  backgroundColor: MaterialStateProperty.all(
+                      Color.fromARGB(255, 0, 0, 0))),
+              onPressed: () {
+                subtractMinutes();
+              },
+              child: const Text(
+                '-1 Min',
+                style: TextStyle(
+                  color:Color.fromARGB(255, 1, 217, 255),
+                  fontSize: 50,
+                ),
+              )),
+          
+          const SizedBox(
+            height: 25,
+          ),
           ElevatedButton(
             // ignore: prefer_const_constructors
             style: ButtonStyle(
+              shape: MaterialStateProperty.all(
+      RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30.0),
+        side: BorderSide(width: 2, color: Color.fromARGB(255, 0, 170, 45),),
+      ),
+    ),
                 backgroundColor: MaterialStateProperty.all(
-                    Color.fromARGB(255, 1, 217, 255))),
+                    Color.fromARGB(255, 0, 0, 0))),
             onPressed: startTimer,
             child: const Text(
               'Start',
               style: TextStyle(
-                color: Color.fromARGB(255, 0, 0, 0),
-                fontSize: 30,
+                color: Color.fromARGB(255, 0, 170, 45),
+                fontSize: 50,
               ),
             ),
           ),
-          // Step 10
+          const SizedBox(
+            height: 10,
+          ),
           ElevatedButton(
             style: ButtonStyle(
+              shape: MaterialStateProperty.all(
+      RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30.0),
+        side: BorderSide(width: 2, color: Color.fromARGB(255, 255, 0, 0)),
+      ),
+    ),
                 backgroundColor: MaterialStateProperty.all(
-                    Color.fromARGB(255, 1, 217, 255))),
+                    Color.fromARGB(255, 0, 0, 0))),
             onPressed: () {
               if (countdownTimer == null || countdownTimer!.isActive) {
                 stopTimer();
@@ -116,26 +187,35 @@ class _TimerPageState extends State<TimerPage> {
             child: const Text(
               'Stop',
               style: TextStyle(
-                color: Color.fromARGB(255, 0, 0, 0),
-                fontSize: 30,
+                color: Color.fromARGB(255, 254, 0, 0),
+                fontSize: 50,
               ),
             ),
           ),
-          // Step 11
+          const SizedBox(
+            height: 10,
+          ),
           ElevatedButton(
               style: ButtonStyle(
+    shape: MaterialStateProperty.all(
+      RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30.0),
+        side: BorderSide(width: 2, color: Color.fromARGB(255, 254, 249, 249)),
+      ),
+    ),
                   backgroundColor: MaterialStateProperty.all(
-                      Color.fromARGB(255, 1, 217, 255))),
+                      Color.fromARGB(255, 7, 8, 9))),
               onPressed: () {
                 resetTimer();
               },
               child: const Text(
                 'Reset',
                 style: TextStyle(
-                  color: Color.fromARGB(255, 0, 0, 0),
-                  fontSize: 30,
+                  color: Color.fromARGB(255, 255, 255, 255),
+                  fontSize: 50,
                 ),
               )),
+          
         ]),
       ),
     );

@@ -36,7 +36,7 @@ class _MondayPage extends State<MondayPage> {
     "Pec Deck Machine: 90lb x 15reps",
     "Pec Deck Machine: 100lb x 15reps",
   ];
-  int forceColor = Color.fromARGB(255, 255, 255, 255);
+  // int forceColor = Color.fromARGB(255, 255, 255, 255);
   String text = '';
 
   @override
@@ -45,7 +45,7 @@ class _MondayPage extends State<MondayPage> {
         appBar: AppBar(
           backgroundColor: Colors.black,
           title: const Text(
-            '                          Add Workouts',
+            '                    Add Workouts',
             style: TextStyle(
               color: Color.fromARGB(255, 255, 255, 255),
               fontFamily: "SF UI Text",
