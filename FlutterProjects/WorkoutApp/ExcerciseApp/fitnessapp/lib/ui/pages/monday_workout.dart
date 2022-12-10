@@ -50,12 +50,13 @@ class _MondayPage extends State<MondayPage> {
         appBar: AppBar(
           backgroundColor: Colors.black,
           title: const Text(
-            '                          Add Workouts',
+            '                    Add Workouts',
             style: TextStyle(
               color: Color.fromARGB(255, 255, 255, 255),
               fontFamily: "SF UI Text",
               fontSize: 20,
               fontWeight: FontWeight.w800,
+
             ),
           ),
           actions: <Widget>[
@@ -114,8 +115,8 @@ class _MondayPage extends State<MondayPage> {
                                               },
                                               child: const Text(
                                                 'Update',
-                                                selectionColor:
-                                                style: TextStyle(
+                                               style:
+                                                 TextStyle(
                                                   color: Color.fromARGB(
                                                       255, 255, 255, 255),
                                                   fontFamily: "SF UI Text",
