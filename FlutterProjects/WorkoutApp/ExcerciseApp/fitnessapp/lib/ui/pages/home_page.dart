@@ -1,6 +1,13 @@
-import 'package:fitnessapp/ui/pages/monday_workout.dart';
 import 'package:fitnessapp/ui/pages/records_page.dart';
 import 'package:fitnessapp/ui/pages/timer_page.dart';
+import 'package:fitnessapp/ui/pages/monday_workout.dart';
+import 'package:fitnessapp/ui/pages/tuesday_workout.dart';
+import 'package:fitnessapp/ui/pages/wednesday_workout.dart';
+import 'package:fitnessapp/ui/pages/thursday_workout.dart';
+import 'package:fitnessapp/ui/pages/friday_workout.dart';
+import 'package:fitnessapp/ui/pages/saturday_workout.dart';
+import 'package:fitnessapp/ui/pages/sunday_workout.dart';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -31,6 +38,10 @@ class _HomePageState extends State<HomePage> {
     final height = MediaQuery.of(context).size.height;
 
     DateTime now = DateTime.now();
+    //final now2 = DateTime.now();
+    double hour = now.minute / 69;
+    double nextHour = now.hour + 1;
+
     String formattedDate = DateFormat.MMMMEEEEd().format(DateTime.now());
     List<String> days = [
       "Monday",
@@ -51,6 +62,7 @@ class _HomePageState extends State<HomePage> {
         children: <Widget>[
           // screens,
           //Light Blue TOP BOX
+
           Positioned(
             top: 150,
             height: 200,
@@ -62,11 +74,10 @@ class _HomePageState extends State<HomePage> {
                 color: Color.fromARGB(255, 0, 0, 0),
               ),
               child: const CircularProgressIndicator.adaptive(
-                  value: .5,
-                  strokeWidth: 3,
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    Color.fromARGB(255, 1, 217, 255),
-                  )),
+                strokeWidth: 2,
+                valueColor: AlwaysStoppedAnimation<Color>(
+                    Color.fromARGB(255, 1, 217, 255)),
+              ),
             ),
           ),
 
@@ -103,7 +114,7 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(
                   color: Color.fromARGB(255, 255, 255, 255),
                   fontFamily: "SF UI Text",
-                  fontSize: 40,
+                  fontSize: 30,
                   fontWeight: FontWeight.w800,
                 ),
               ),
@@ -160,11 +171,58 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const MondayPage()));
-                              setState(() {
-                                days.insert(index, 'updated value');
-                              });
+                              if (index == 0) {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => const MondayPage()));
+                                setState(() {
+                                  days.insert(index, 'updated value');
+                                });
+                              }
+                              if (index == 1) {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => const TuesdayPage()));
+                                setState(() {
+                                  days.insert(index, 'updated value');
+                                });
+                              }
+                              if (index == 2) {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) =>
+                                        const WednesdayPage()));
+                                setState(() {
+                                  days.insert(index, 'updated value');
+                                });
+                              }
+                              if (index == 3) {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) =>
+                                        const ThursdayPage()));
+                                setState(() {
+                                  days.insert(index, 'updated value');
+                                });
+                              }
+                              if (index == 4) {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => const FridayPage()));
+                                setState(() {
+                                  days.insert(index, 'updated value');
+                                });
+                              }
+                              if (index == 5) {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) =>
+                                        const SaturdayPage()));
+                                setState(() {
+                                  days.insert(index, 'updated value');
+                                });
+                              }
+                              if (index == 6) {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => const SundayPage()));
+                                setState(() {
+                                  days.insert(index, 'updated value');
+                                });
+                              }
                             },
                             onLongPress: () {
                               //                            <-- onLongPress
@@ -181,144 +239,8 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-
-          // child: ListView(
-          //   scrollDirection: Axis.vertical,
-          //   // addAutomaticKeepAlives: false,
-          //   // padding: const EdgeInsets.all(10),
-          //   children: <Widget>[
-          //     Expanded(
-          //       child: GestureDetector(
-          //         onTap: () {
-          //           Navigator.of(context).push(
-          //             MaterialPageRoute(
-          //               builder: (context) => const MondayPage(),
-          //               // currentIndex: _selectedIndex,
-          //             ),
-          //           );
-          //         },
-          //         child: Container(
-          //           decoration: BoxDecoration(
-          //             borderRadius: BorderRadius.circular(20.0),
-          //             gradient: const LinearGradient(
-          //               begin: Alignment.topCenter,
-          //               end: Alignment.bottomCenter,
-          //               colors: <Color>[
-          //                 Color.fromARGB(255, 1, 217, 255),
-          //                 Colors.black
-          //               ],
-          //             ),
-          //           ),
-          //           height: 100,
-          //           // color: Color.fromARGB(255, 1, 217, 255),
-          //           child: const Center(
-          //             child: Text(
-          //               "Monday",
-          //               style: TextStyle(
-          //                 color: Color.fromARGB(255, 255, 255, 255),
-          //                 fontFamily: ".SF UI Text",
-          //                 fontSize: 30,
-          //                 fontWeight: FontWeight.w300,
-          //               ),
-          //             ),
-          //           ),
-          //         ),
-          //       ),
-          //     ),
-          //     Container(
-          //       decoration: BoxDecoration(
-          //         borderRadius: BorderRadius.circular(20.0),
-          //         gradient: const LinearGradient(
-          //             begin: Alignment.topCenter,
-          //             end: Alignment.bottomCenter,
-          //             colors: <Color>[
-          //               Color.fromARGB(255, 1, 217, 255),
-          //               Colors.black
-          //             ]),
-          //       ),
-          //       height: 100,
-          //       // color: Color.fromARGB(255, 1, 217, 255),
-          //       child: const Center(
-          //           child: Text('Tuesday',
-          //               style: TextStyle(
-          //                 color: Color.fromARGB(255, 255, 255, 255),
-          //                 fontFamily: ".SF UI Text",
-          //                 fontSize: 30,
-          //                 fontWeight: FontWeight.w300,
-          //               ))),
-          //     ),
-          //     Container(
-          //       decoration: BoxDecoration(
-          //         borderRadius: BorderRadius.circular(20.0),
-          //         gradient: const LinearGradient(
-          //             begin: Alignment.topCenter,
-          //             end: Alignment.bottomCenter,
-          //             colors: <Color>[
-          //               Color.fromARGB(255, 1, 217, 255),
-          //               Colors.black
-          //             ]),
-          //       ),
-          //       height: 100,
-          //       // color: Color.fromARGB(255, 1, 217, 255),
-          //       child: const Center(
-          //           child: Text('Wednesday',
-          //               style: TextStyle(
-          //                 color: Color.fromARGB(255, 255, 255, 255),
-          //                 fontFamily: ".SF UI Text",
-          //                 fontSize: 30,
-          //                 fontWeight: FontWeight.w300,
-          //               ))),
-          //     ),
-          //     Container(
-          //       decoration: BoxDecoration(
-          //         borderRadius: BorderRadius.circular(20.0),
-          //         gradient: const LinearGradient(
-          //             begin: Alignment.topCenter,
-          //             end: Alignment.bottomCenter,
-          //             colors: <Color>[
-          //               Color.fromARGB(255, 1, 217, 255),
-          //               Colors.black
-          //             ]),
-          //       ),
-          //       height: 100,
-          //       // color: Color.fromARGB(255, 1, 217, 255),
-          //       child: const Center(
-          //           child: Text('Thursday',
-          //               style: TextStyle(
-          //                 color: Color.fromARGB(255, 255, 255, 255),
-          //                 fontFamily: ".SF UI Text",
-          //                 fontSize: 30,
-          //                 fontWeight: FontWeight.w300,
-          //               ))),
-          //     ),
-          //     Container(
-          //       decoration: BoxDecoration(
-          //         borderRadius: BorderRadius.circular(20.0),
-          //         gradient: const LinearGradient(
-          //             begin: Alignment.topCenter,
-          //             end: Alignment.bottomCenter,
-          //             colors: <Color>[
-          //               Color.fromARGB(255, 1, 217, 255),
-          //               Colors.black
-          //             ]),
-          //       ),
-          //       height: 100,
-          //       // color: Color.fromARGB(255, 1, 217, 255),
-          //       child: const Center(
-          //           child: Text('Friday',
-          //               style: TextStyle(
-          //                 color: Color.fromARGB(255, 255, 255, 255),
-          //                 fontFamily: ".SF UI Text",
-          //                 fontSize: 30,
-          //                 fontWeight: FontWeight.w300,
-          //               ))),
-          //     ),
-          //   ],
-          // ),
         ],
       ),
     );
-
-    // ));
   }
 }

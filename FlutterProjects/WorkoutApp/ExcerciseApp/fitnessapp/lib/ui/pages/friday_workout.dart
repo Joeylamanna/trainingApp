@@ -1,42 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class MondayPage extends StatefulWidget {
-  const MondayPage({Key? key}) : super(key: key);
+class FridayPage extends StatefulWidget {
+  const FridayPage({Key? key}) : super(key: key);
 
   @override
-  _MondayPage createState() => _MondayPage();
+  _FridayPage createState() => _FridayPage();
 }
 
 @override
-class _MondayPage extends State<MondayPage> {
+class _FridayPage extends State<FridayPage> {
   @override
   DateTime now = DateTime.now();
   String formattedDate = DateFormat.MMMMEEEEd().format(DateTime.now());
 
   List<String> workouts = [
-    "Bench Press: 135lb x 10reps",
-    "Bench Press: 155lb x 3reps",
-    "Bench Press: 165lb x 10reps",
-    "Bench Press: 185lb x 5reps",
-    "Bench Press: 185lb x 5reps",
-    "Bench Press: 225lb x 3reps",
-    "Bench Press: 185lb x 5reps",
-    "Bench Press: 185lb x 5reps",
-    "Incline Dumbbells: 40lbs x 10reps",
-    "Incline Dumbbells: 45lbs x 8reps",
-    "Incline Dumbbells: 50lbs x 5reps",
-    "Incline Dumbbells: 60lbs x 5reps",
-    "Tricep Pulldowns: 40lb x 20reps",
-    "Tricep Pulldowns: 45lb x 15reps",
-    "Tricep Pulldowns: 45lb x 15reps",
-    "Tricep Pulldowns: 50lb x 10reps",
-    "Pec Deck Machine: 70lb x 20reps",
-    "Pec Deck Machine: 80lb x 20reps",
-    "Pec Deck Machine: 90lb x 15reps",
-    "Pec Deck Machine: 100lb x 15reps",
+    "workout FRIDAY",
+    "workout 2",
+    "workout 3",
+    "workout 4",
+    "workout 5",
+    "workout 6",
+    "workout 7",
+    "workout 8",
+    "workout 9",
+    "workout 10",
+    "workout 11",
+    "workout 12",
   ];
-  int forceColor = Color.fromARGB(255, 255, 255, 255);
+
   String text = '';
 
   @override
