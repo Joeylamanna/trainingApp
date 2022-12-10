@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "205611060922",
+    "firebase_url": "https://fitnessapp-d9b8e-default-rtdb.firebaseio.com",
     "project_id": "fitnessapp-d9b8e",
     "storage_bucket": "fitnessapp-d9b8e.appspot.com"
   },
@@ -29,6 +30,13 @@
             {
               "client_id": "205611060922-hf28cqo4tirk7j9ec5t4evsagvcch26k.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "205611060922-ucdhvccfcdkcpopv0l7jmnhf46m5clpp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.fitnessappjjjj"
+              }
             }
           ]
         }

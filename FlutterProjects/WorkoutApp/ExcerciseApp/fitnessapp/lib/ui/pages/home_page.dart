@@ -39,6 +39,7 @@ class _HomePageState extends State<HomePage> {
       "Thursday",
       "Friday",
       "Saturday",
+      "Sunday",
     ];
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 0, 0, 0), //backround to black
@@ -51,21 +52,21 @@ class _HomePageState extends State<HomePage> {
           // screens,
           //Light Blue TOP BOX
           Positioned(
-            top: 140,
-            height: height * 0.25,
-            left: 20,
-            right: 20,
+            top: 150,
+            height: 200,
+            left: 100,
+            right: 100,
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20.0),
-                gradient: const LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: <Color>[
-                      Color.fromARGB(255, 1, 217, 255),
-                      Colors.black
-                    ]),
+                color: Color.fromARGB(255, 0, 0, 0),
               ),
+              child: const CircularProgressIndicator.adaptive(
+                  value: .5,
+                  strokeWidth: 3,
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    Color.fromARGB(255, 1, 217, 255),
+                  )),
             ),
           ),
 
@@ -137,33 +138,42 @@ class _HomePageState extends State<HomePage> {
                   itemCount: days.length,
                   itemBuilder: (context, index) {
                     return Card(
+                      elevation: 0,
                       shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                        borderRadius: BorderRadius.all(Radius.circular(40.0)),
+                        side:
+                            BorderSide(color: Color.fromARGB(255, 1, 217, 255)),
                       ),
-                      color: Color.fromARGB(255, 1, 217, 255),
-                      child: ListTile(
-                        title: Text(
-                          days[index],
-                          style: const TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255),
-                            fontFamily: ".SF UI Text",
-                            fontSize: 30,
-                            fontWeight: FontWeight.w300,
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      child: SizedBox(
+                        height: 75,
+                        child: Center(
+                          child: ListTile(
+                            title: Text(
+                              textAlign: TextAlign.center,
+                              days[index],
+                              style: const TextStyle(
+                                color: Color.fromARGB(255, 0, 204, 255),
+                                fontFamily: ".SF UI Text",
+                                fontSize: 30,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => const MondayPage()));
+                              setState(() {
+                                days.insert(index, 'updated value');
+                              });
+                            },
+                            onLongPress: () {
+                              //                            <-- onLongPress
+                              setState(() {
+                                days.removeAt(index);
+                              });
+                            },
                           ),
                         ),
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const MondayPage()));
-                          setState(() {
-                            days.insert(index, 'updated value');
-                          });
-                        },
-                        onLongPress: () {
-                          //                            <-- onLongPress
-                          setState(() {
-                            days.removeAt(index);
-                          });
-                        },
                       ),
                     );
                   },

@@ -62,7 +62,16 @@ class _TimerPageState extends State<TimerPage> {
       backgroundColor: Color.fromARGB(255, 0, 0, 0),
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 1, 217, 255),
-        title: const Text("Timer"),
+        centerTitle: true,
+        title: const Text(
+          "Timer",
+          style: TextStyle(
+            color: Color.fromARGB(255, 0, 0, 0),
+            fontFamily: ".SF UI Text",
+            fontSize: 25,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
         foregroundColor: Color.fromARGB(255, 0, 0, 0),
       ),
       body: Center(

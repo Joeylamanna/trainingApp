@@ -48,10 +48,9 @@ class _MondayPage extends State<MondayPage> {
 
     return Scaffold(
         appBar: AppBar(
-          centerTitle: false,
           backgroundColor: Colors.black,
           title: const Text(
-            '                            Add Workouts',
+            '                          Add Workouts',
             style: TextStyle(
               color: Color.fromARGB(255, 255, 255, 255),
               fontFamily: "SF UI Text",
@@ -79,13 +78,14 @@ class _MondayPage extends State<MondayPage> {
             itemBuilder: (context, index) {
               return Card(
                 shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                  borderRadius: BorderRadius.all(Radius.circular(45.0)),
+                  side: BorderSide(color: Color.fromARGB(255, 255, 255, 255)),
                 ),
-                color: Color.fromARGB(255, 1, 217, 255),
+                color: Color.fromARGB(255, 0, 0, 0),
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: ListTile(
-                    textColor: Color.fromARGB(255, 0, 0, 0),
+                    textColor: Color.fromARGB(255, 255, 255, 255),
                     selectedTileColor: Colors.white,
                     title: Text(workouts[index]),
                     trailing: Container(
@@ -94,7 +94,7 @@ class _MondayPage extends State<MondayPage> {
                           children: [
                             Expanded(
                                 child: IconButton(
-                                    color: Colors.black,
+                                    color: Color.fromARGB(255, 255, 255, 255),
                                     onPressed: () {
                                       showDialog(
                                         context: context,
@@ -114,6 +114,7 @@ class _MondayPage extends State<MondayPage> {
                                               },
                                               child: const Text(
                                                 'Update',
+                                                selectionColor:
                                                 style: TextStyle(
                                                   color: Color.fromARGB(
                                                       255, 255, 255, 255),
@@ -130,7 +131,7 @@ class _MondayPage extends State<MondayPage> {
                                     icon: Icon(Icons.edit))),
                             Expanded(
                                 child: IconButton(
-                                    color: Colors.black,
+                                    color: Color.fromARGB(255, 255, 255, 255),
                                     onPressed: () {
                                       setState(() {
                                         workouts.removeAt(index);

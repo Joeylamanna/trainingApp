@@ -1,5 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 class RecordsPage extends StatefulWidget {
@@ -10,43 +8,23 @@ class RecordsPage extends StatefulWidget {
 }
 
 class _RecordsPage extends State<RecordsPage> {
-  //final Future<FirebaseApp> _fApp = Firebase.initializeApp();
-
-  String newRecord = 'insert record here';
-
-  var recordData = ['bench: 200lbs', 'adf', 'adfd'];
-  
+  List<String> recordData = ['Bench', 'Squat', 'Deadlift'];
   String text = '';
-  String temp = "";
   @override
   Widget build(BuildContext context) {
-    DatabaseReference _testRef =
-        FirebaseDatabase.instance.ref().child('record0');
-    //FirebaseDatabase.instance.ref().child('record1');
-
-    for (int i = 0; i < 3; i++) {
-      _testRef = FirebaseDatabase.instance.ref().child('record$i');
-       _testRef.onValue.listen(
-        (event) {
-          temp = event.snapshot.value.toString();
-        },
-      );
-      recordData.add(temp);
-    }
-    // for (int i = 0; i < 3; i++) {
-    //   _testRef = FirebaseDatabase.instance.ref().child(recordIndex[i]);
-    //   recordData.add(temp);
-    //   _testRef.onValue.listen(
-    //     (event) {
-    //       temp = event.snapshot.value.toString();
-    //     },
-    //   );
-    // }
-
     return Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           backgroundColor: const Color.fromARGB(255, 1, 217, 255),
-          title: const Text("Personal Records"),
+          title: const Text(
+            "Personal Records",
+            style: TextStyle(
+              color: Color.fromARGB(255, 0, 0, 0),
+              fontFamily: ".SF UI Text",
+              fontSize: 25,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
           foregroundColor: Color.fromARGB(255, 0, 0, 0),
         ),
         backgroundColor: Colors.black,
@@ -107,15 +85,7 @@ class _RecordsPage extends State<RecordsPage> {
                                     color: Colors.black,
                                     onPressed: () {
                                       setState(() {
-                                        _testRef.onValue.listen(
-                                          (event) {
-                                            setState(() {
-                                              newRecord = event.snapshot.value
-                                                  .toString();
-                                            });
-                                          },
-                                        );
-                                        recordData.add(newRecord);
+                                        recordData.add('add record');
                                       });
                                     },
                                     icon: Icon(Icons.add)))
