@@ -36,7 +36,7 @@ class _MondayPage extends State<MondayPage> {
     "Pec Deck Machine: 90lb x 15reps",
     "Pec Deck Machine: 100lb x 15reps",
   ];
-  // int forceColor = Color.fromARGB(255, 255, 255, 255);
+
   String text = '';
 
   @override
@@ -82,7 +82,8 @@ class _MondayPage extends State<MondayPage> {
                   child: ListTile(
                     textColor: Color.fromARGB(255, 255, 255, 255),
                     selectedTileColor: Colors.white,
-                    title: Text(workouts[index]),
+                    title: Text(workouts[index],
+                        style: const TextStyle(fontSize: 15)),
                     trailing: Container(
                         width: 80,
                         child: Row(
