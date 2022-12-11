@@ -15,18 +15,9 @@ class _SundayPage extends State<SundayPage> {
   String formattedDate = DateFormat.MMMMEEEEd().format(DateTime.now());
 
   List<String> workouts = [
-    "workout SUNDAY",
-    "workout 2",
-    "workout 3",
-    "workout 4",
-    "workout 5",
-    "workout 6",
-    "workout 7",
-    "workout 8",
-    "workout 9",
-    "workout 10",
-    "workout 11",
-    "workout 12",
+    "REST",
+    "SLEEP",
+    "WATER",
   ];
 
   String text = '';
