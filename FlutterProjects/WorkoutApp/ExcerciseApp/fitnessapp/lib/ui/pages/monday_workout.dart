@@ -38,7 +38,7 @@ class _MondayPage extends State<MondayPage> {
   ];
 
   String text = '';
-
+  Color currentColor = Colors.white;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

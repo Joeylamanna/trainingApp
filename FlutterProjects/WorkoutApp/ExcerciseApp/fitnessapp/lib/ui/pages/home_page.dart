@@ -52,6 +52,9 @@ class _HomePageState extends State<HomePage> {
       "Saturday",
       "Sunday",
     ];
+
+    bool isSelected = false;
+
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 0, 0, 0), //backround to black
 
@@ -63,26 +66,66 @@ class _HomePageState extends State<HomePage> {
           // screens,
           //Light Blue TOP BOX
 
-          const Positioned(
-            top: 150,
-            height: 200,
-            left: 100,
-            right: 100,
-            child: Text("Current Weight: 160lbs",
-              style: TextStyle(color: Colors.white,
-              fontSize: 20),
+          Positioned(
+            top: 82,
+            left: 20,
+            right: 20,
+            height: height * .35,
+            child: const SizedBox(
+              height: 310,
+              child: Text(
+                "User Info",
+                style: TextStyle(
+                  color: Color.fromARGB(255, 255, 255, 255),
+                  fontFamily: "SF UI Text",
+                  fontSize: 30,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
             ),
-            
           ),
+
           const Positioned(
-            top: 180,
+            top: 120,
             height: 200,
-            left: 100,
-            right: 100,
-            child: Text(" Goal Weight: 180 lbs",
-              style: TextStyle(color: Colors.white),
+            left: 55,
+            right: 55,
+            child: Text(
+              "- Current Weight: 200lb\n- Curent Height: 6' 8''\n- Fastest Mile: 7:00",
+              style: TextStyle(
+                  color: Color.fromARGB(255, 1, 217, 255), fontSize: 20),
             ),
-            
+          ),
+
+          Positioned(
+            top: 220,
+            left: 20,
+            right: 20,
+            height: height * .35,
+            child: const SizedBox(
+              height: 10,
+              child: Text(
+                "Goals",
+                style: TextStyle(
+                  color: Color.fromARGB(255, 255, 255, 255),
+                  fontFamily: "SF UI Text",
+                  fontSize: 30,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ),
+          ),
+
+          const Positioned(
+            top: 260,
+            height: 200,
+            left: 55,
+            right: 55,
+            child: Text(
+              "- Run a 5k under 19:30min\n- Run a marathon under 3hrs\n- Climb Mount Everest",
+              style: TextStyle(
+                  color: Color.fromARGB(255, 1, 217, 255), fontSize: 20),
+            ),
           ),
 
           //DATE
@@ -106,24 +149,6 @@ class _HomePageState extends State<HomePage> {
           ),
 
           //Summary
-          Positioned(
-            top: 80,
-            left: 20,
-            right: 20,
-            height: height * .35,
-            child: const SizedBox(
-              height: 310,
-              child: Text(
-                "Summary",
-                style: TextStyle(
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  fontFamily: "SF UI Text",
-                  fontSize: 30,
-                  fontWeight: FontWeight.w800,
-                ),
-              ),
-            ),
-          ),
 
           Positioned(
             top: 355,
