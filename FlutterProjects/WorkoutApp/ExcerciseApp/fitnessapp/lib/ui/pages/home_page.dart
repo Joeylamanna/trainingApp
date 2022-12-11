@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> {
             left: 55,
             right: 55,
             child: Text(
-              "- Current Weight: 200lb\n- Curent Height: 6' 8''\n- Fastest Mile: 7:00",
+              "• Current Weight: 200lb\n• Curent Height: 6' 8''\n• Fastest Mile: 7:00",
               style: TextStyle(
                   color: Color.fromARGB(255, 1, 217, 255), fontSize: 20),
             ),
@@ -122,7 +122,7 @@ class _HomePageState extends State<HomePage> {
             left: 55,
             right: 55,
             child: Text(
-              "- Run a 5k under 19:30min\n- Run a marathon under 3hrs\n- Climb Mount Everest",
+              "• Run a 5k under 19:30min\n• Run a marathon under 3hrs\n• Climb Mount Everest",
               style: TextStyle(
                   color: Color.fromARGB(255, 1, 217, 255), fontSize: 20),
             ),
