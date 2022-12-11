@@ -40,7 +40,7 @@ class _SaturdayPage extends State<SaturdayPage> {
         appBar: AppBar(
           backgroundColor: Colors.black,
           title: const Text(
-            '                          Add Workouts',
+            '                      Add Workouts',
             style: TextStyle(
               color: Color.fromARGB(255, 255, 255, 255),
               fontFamily: "SF UI Text",
