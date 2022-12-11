@@ -22,9 +22,9 @@ class _HomePageState extends State<HomePage> {
 
   final screens = [
     HomePage(),
-    TimerPage(),
-    RecordsPage(),
-    MondayPage(),
+    const TimerPage(),
+    const RecordsPage(),
+    const MondayPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
       "Sunday",
     ];
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 0, 0, 0), //backround to black
+      backgroundColor: const Color.fromARGB(255, 0, 0, 0), //backround to black
 
       body: Stack(
         // //allows the state to be preserved when switching screens
@@ -63,22 +63,26 @@ class _HomePageState extends State<HomePage> {
           // screens,
           //Light Blue TOP BOX
 
-          Positioned(
+          const Positioned(
             top: 150,
             height: 200,
             left: 100,
             right: 100,
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20.0),
-                color: Color.fromARGB(255, 0, 0, 0),
-              ),
-              child: const CircularProgressIndicator.adaptive(
-                strokeWidth: 2,
-                valueColor: AlwaysStoppedAnimation<Color>(
-                    Color.fromARGB(255, 1, 217, 255)),
-              ),
+            child: Text("Current Weight: 160lbs",
+              style: TextStyle(color: Colors.white,
+              fontSize: 20),
             ),
+            
+          ),
+          const Positioned(
+            top: 180,
+            height: 200,
+            left: 100,
+            right: 100,
+            child: Text(" Goal Weight: 180 lbs",
+              style: TextStyle(color: Colors.white),
+            ),
+            
           ),
 
           //DATE
@@ -155,7 +159,7 @@ class _HomePageState extends State<HomePage> {
                         side:
                             BorderSide(color: Color.fromARGB(255, 1, 217, 255)),
                       ),
-                      color: Color.fromARGB(255, 0, 0, 0),
+                      color: const Color.fromARGB(255, 0, 0, 0),
                       child: SizedBox(
                         height: 75,
                         child: Center(
