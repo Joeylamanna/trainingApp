@@ -8,7 +8,7 @@ class RecordsPage extends StatefulWidget {
 }
 
 class _RecordsPage extends State<RecordsPage> {
-  List<String> recordData = ['Bench', 'Squat', 'Deadlift'];
+  List<String> recordData = ['Bench: 225lbs', 'Squat: 315lbs ', 'Deadlift 405lbs'];
   String text = '';
   @override
   Widget build(BuildContext context) {
@@ -63,6 +63,8 @@ class _RecordsPage extends State<RecordsPage> {
                                       showDialog(
                                         context: context,
                                         builder: (context) => SimpleDialog(
+                                          
+                                          backgroundColor: Color.fromARGB(255, 1, 217, 255),
                                           children: [
                                             TextField(onChanged: (value) {
                                               setState(() {

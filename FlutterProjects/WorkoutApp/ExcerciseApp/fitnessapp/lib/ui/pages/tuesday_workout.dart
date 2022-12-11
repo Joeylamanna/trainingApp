@@ -15,18 +15,23 @@ class _TuesdayPage extends State<TuesdayPage> {
   String formattedDate = DateFormat.MMMMEEEEd().format(DateTime.now());
 
   List<String> workouts = [
-    "workout TUESDAY",
-    "workout 2",
-    "workout 3",
-    "workout 4",
-    "workout 5",
-    "workout 6",
-    "workout 7",
-    "workout 8",
-    "workout 9",
-    "workout 10",
-    "workout 11",
-    "workout 12",
+    "Back Squat: 135lb x 10reps",
+    "Back Squat: 225lb x 5reps",
+    "Back Squat: 225lb x 5reps",
+    "Back Squat: 225lb x 5reps",
+    "Back Squat: 315lb x 1rep",
+    "Leg Extensions: 100lbs x 20reps",
+    "Leg Extensions: 150lbs x 10reps",
+    "Leg Extensions: 150lbs x 10reps",
+    "Leg Extensions: 160lbs x 10reps",
+    "Hamstring Curls: 100lb x 20reps",
+    "Hamstring Curls: 120lb x 10reps",
+    "Hamstring Curls: 120lb x 10reps",
+    "Hamstring Curls: 130lb x 8reps",
+    "Calf Raises: 90lb x 20reps",
+    "Calf Raises: 115lb x 12reps",
+    "Calf Raises: 115lb x 12reps",
+    "Calf Raises: 115lb x 12reps",
   ];
 
   String text = '';
